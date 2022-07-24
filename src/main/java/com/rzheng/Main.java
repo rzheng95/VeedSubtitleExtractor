@@ -4,8 +4,8 @@ import java.io.*;
 
 public class Main {
     public static void main(String[] args) {
-        final String SOURCE_FILE_PATH = "source.txt",
-                     OUTPUT_FILE_PATH = "output.srt";
+        final String SOURCE_FILE_PATH = "source/first.html",
+                     OUTPUT_FILE_PATH = "output/first.srt";
 
         writeFile(OUTPUT_FILE_PATH, readFile(SOURCE_FILE_PATH));
     }
@@ -25,11 +25,11 @@ public class Main {
                 String endTime = "";
                 while ((line = reader.readLine()) != null) {
                     if (isSubtitle(line)) {
-                        subtitle += extractSubtitleFromLine(line);
+                        subtitle += extractSubtitleFromLine(line.trim());
                     }
 
                     if (isTime(line)) {
-                        String time = extractTimeFromLine(line);
+                        String time = extractTimeFromLine(line.trim());
                         if (startTime.isBlank()) {
                             startTime = time;
                         } else {
@@ -70,14 +70,14 @@ public class Main {
     }
 
     private static String extractSubtitleFromLine(String line) {
-        final int START_POS = 112,
+        final int START_POS = 67,
                   END_POS = line.length() - 14;
         return line.substring(START_POS, END_POS);
     }
 
     private static String extractTimeFromLine(String line) {
-        final int START_POS = line.length() - 11,
-                  END_POS = line.length() - 4;
+        final int START_POS = 7,
+                  END_POS = line.length() - 8;
         return line.substring(START_POS, END_POS).replace(".", ",");
     }
 
