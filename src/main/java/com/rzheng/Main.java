@@ -5,7 +5,7 @@ import java.io.*;
 public class Main {
     public static void main(String[] args) {
         final String SOURCE_FILE_PATH = "source.txt",
-                     OUTPUT_FILE_PATH = "output.txt";
+                     OUTPUT_FILE_PATH = "output.srt";
 
         writeFile(OUTPUT_FILE_PATH, readFile(SOURCE_FILE_PATH));
     }
